@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Expense</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <div class="auth-container">
+        <div class="auth-card">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <h1>Edit Expense</h1>
+
+            <form method="POST">
+                <label>Amount:</label>
+                <input type="number" step="0.01" name="amount" value="{{ "{:.2f}".format(expense.amount) }}" required /><br>
+                <label>Category:</label>
+                <input type="text" name="category" value="{{ expense.category }}" required /><br>
+                <label>Date:</label>
+                <input type="date" name="date" value="{{ expense.date }}" required /><br>
+                <label>Description:</label>
+                <textarea name="description">{{ expense.description }}</textarea><br>
+                <button type="submit">Update Expense</button>
+            </form>
+            <a href="{{ url_for('routes.dashboard') }}">Back to Dashboard</a>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

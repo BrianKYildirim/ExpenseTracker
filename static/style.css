@@ -1,0 +1,345 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 0px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+nav {
+  background: #444;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button, input[type="submit"] {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover, input[type="submit"]:hover {
+  background: #555;
+}
+
+ul.summary {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+li.summary {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.flash {
+  background: #ffc;
+  border: 1px solid #cc9;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.expense-table thead {
+  background: #f4f4f4;
+}
+
+.expense-table th,
+.expense-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.expense-table th {
+  font-weight: bold;
+}
+
+.inline-form {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: space-around;
+}
+
+.btn {
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 12%;
+  margin: 2%;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #555;
+  text-decoration: none;
+}
+
+.btn-danger {
+  background-color: #c0392b;
+}
+
+.btn-danger:hover {
+  background-color: #e74c3c;
+}
+
+.index-btn {
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 7px;
+  margin: 0;
+  color: #fff;
+  background-color: #333;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.index-btn:hover {
+  background: #555;
+}
+
+input[type="date"], .filter-form input[type="date"] {
+  position: relative;
+  padding-left: 30px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator, .filter-form input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+/* Center the card on the screen, both vertically and horizontally */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9; /* optional, can match or differ from body */
+  padding: 20px;
+}
+
+/* The card with a white background, shadow, etc. */
+.auth-card {
+  width: 400px;  /* you can adjust this */
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* subtle shadow */
+}
+
+/* Headings inside the card */
+.auth-card h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form elements within the card */
+.auth-card form {
+  margin-bottom: 15px;
+}
+
+.auth-card label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.auth-card input[type="text"],
+.auth-card input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Button styling (you can reuse your .btn classes if you want) */
+.auth-card button, .auth-card a.index-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.auth-card a.index-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card button:hover {
+  background-color: #555;
+}
+
+/* Flash messages in the card */
+.flash {
+  background-color: #fffaac;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+/* Small text link under the button */
+.auth-card p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.expenses-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* space between places h1 on the left, button on the right */
+  margin-bottom: 10px;            /* spacing before the table */
+}
+
+.expenses-header h1 {
+  margin: 0;
+  font-size: 1.5rem; /* or whatever size you prefer */
+}
+
+
+.filter-toggle {
+  background-color: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px 0 10px 0;
+  width: 120px;
+}
+
+.filter-toggle:hover {
+  background-color: #555;
+}
+
+/* Collapsible container - hidden by default */
+.filter-container.hidden {
+  display: none;
+}
+
+/* You can style the container as desired */
+.filter-container {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.filter-form {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.filter-form div {
+  margin-bottom: 10px;
+}
+
+.filter-form label {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.filter-form input,
+.filter-form select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

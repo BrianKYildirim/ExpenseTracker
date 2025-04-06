@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Expense Tracker{% endblock %}</title>
+    <link rel="stylesheet" href="/static/base.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+            toggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.querySelector('.filter-toggle');
+            const filterContainer = document.querySelector('.filter-container');
+            toggleBtn.addEventListener('click', function() {
+                filterContainer.classList.toggle('hidden');
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="{{ url_for('routes.index') }}">Expense Tracker</a>
+        </div>
+        <div class="navbar-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="navbar-links" id="nav-links">
+            {% if 'user_id' in session %}
+                <li><a href="{{ url_for('routes.dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('routes.summary') }}">Summary</a></li>
+                <li><a href="{{ url_for('routes.add_expense') }}">Add Expense</a></li>
+                <li><a href="{{ url_for('routes.logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('routes.login') }}">Login</a></li>
+                <li><a href="{{ url_for('routes.register') }}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="footer">
+        <h2>Expense Tracker</h2>
+        <p>By Brian Yildirim</p>
+    </div>
+</body>
+</html>

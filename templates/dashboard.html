@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="expenses-header">
+        <h1>Your Expenses</h1>
+        <button type="button" class="filter-toggle">Sort & Filter</button>
+    </div>
+
+    <div class="filter-container hidden">
+        <form method="GET" action="{{ url_for('routes.dashboard') }}" class="filter-form">
+            <div>
+                <label for="sort_field">Sort By:</label>
+                <select id="sort_field" name="sort_field">
+                    <option value="date" {% if request.args.get('sort_field', 'date') == 'date' %}selected{% endif %}>Date</option>
+                    <option value="category" {% if request.args.get('sort_field') == 'category' %}selected{% endif %}>Category</option>
+                    <option value="amount" {% if request.args.get('sort_field') == 'amount' %}selected{% endif %}>Amount</option>
+                </select>
+                <select name="sort_order">
+                    <option value="ASC" {% if request.args.get('sort_order', 'ASC') == 'ASC' %}selected{% endif %}>Ascending</option>
+                    <option value="DESC" {% if request.args.get('sort_order') == 'DESC' %}selected{% endif %}>Descending</option>
+                </select>
+            </div>
+            <div>
+                <p>Categories:</p>
+                {% for cat in categories %}
+                    <label>
+                        <input
+                                type="checkbox"
+                                name="cat"
+                                value="{{ cat }}"
+                                {% if cat in request.args.getlist('cat') %}checked{% endif %}
+                        >
+                        {{ cat }}
+                    </label><br>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" value="{{ request.args.get('start_date', '') }}">
+            </div>
+            <div>
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" name="end_date" value="{{ request.args.get('end_date', '') }}">
+            </div>
+            <div>
+                <label for="min_amount">Min Amount:</label>
+                <input type="number" step="0.01" id="min_amount" name="min_amount" value="{{ request.args.get('min_amount', '') }}">
+            </div>
+            <div>
+                <label for="max_amount">Max Amount:</label>
+                <input type="number" step="0.01" id="max_amount" name="max_amount" value="{{ request.args.get('max_amount', '') }}">
+            </div>
+            <button type="submit">Apply Filters</button>
+        </form>
+    </div>
+
+    <table class="expense-table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th style="width: 120px;">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.date_mdy }}</td>
+                <td>{{ expense.category }}</td>
+                <td>${{ "{:.2f}".format(expense.amount) }}</td>
+                <td>{{ expense.description }}</td>
+                <td>
+                    <form class="inline-form" action="{{ url_for('routes.edit_expense', expense_id=expense.id) }}">
+                        <button class="btn">Edit</button>
+                    </form>
+                    <form class="inline-form" action="{{ url_for('routes.delete_expense', expense_id=expense.id) }}" method="POST">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
+</body>
+</html>

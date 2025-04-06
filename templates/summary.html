@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Summary</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1>Expense Summary</h1>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <p>Total Spent: ${{ "{:.2f}".format(total) }}</p>
+            <ul class="summary">
+                {% for category, amount in summary_data %}
+                    <li class="summary">{{ category }}: ${{ "{:.2f}".format(amount) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

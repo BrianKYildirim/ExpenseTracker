@@ -1,0 +1,106 @@
+/* ========== NAVBAR STYLES ========== */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.navbar-brand a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Hamburger icon - hidden on larger screens */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: #ffffff;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Nav links on desktop */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.navbar-links li {
+  margin: 0 8px;
+    background: #333;
+}
+
+.navbar-links a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0;
+  border-radius: 4px;
+}
+
+/* ========== RESPONSIVE MEDIA QUERIES ========== */
+@media (max-width: 780px) {
+  .navbar-toggle {
+    display: flex; /* show hamburger on mobile */
+  }
+
+  /* Hide the nav links by default (slide off screen to the right) */
+  .navbar-links {
+    position: absolute;
+    top: 50px; /* height of navbar */
+    right: 0;
+    background-color: #333;
+    width: 200px;
+    height: calc(100vh - 60px);
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out;
+    padding-top: 20px;
+    z-index: 999; /* ensure it appears on top of content */
+  }
+
+  /* When .active is toggled, the menu slides in */
+  .navbar-links.active {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+
+  .navbar-links li {
+    width: 100%;
+    margin: 0;
+  }
+
+  .navbar-links a {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+  }
+}
+
+div.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  height: 120px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 0 60px;
+}
